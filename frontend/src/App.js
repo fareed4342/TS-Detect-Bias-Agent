@@ -39,7 +39,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/chat', {
+      const response = await axios.post('http://3.90.64.123:5000/chat', {
         message: message
       });
 
