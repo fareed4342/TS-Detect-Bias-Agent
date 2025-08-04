@@ -39,7 +39,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://c1e598b96be8.ngrok-free.app/chat', {
+      const response = await axios.post('https://c09935ad581a.ngrok-free.app/chat', {
         message: message
       });
 
