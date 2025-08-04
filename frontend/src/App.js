@@ -112,7 +112,7 @@ function App() {
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Type your message..."
+            placeholder="Type your message...."
             disabled={loading}
           />
           <button type="button" onClick={handleRefresh} className="refresh-button" title="Refresh">
