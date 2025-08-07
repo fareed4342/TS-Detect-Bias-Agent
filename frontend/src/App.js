@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
-import logo from './logo.png'; // Make sure to add your logo.png file in src folder
+import logo from './logo.png';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -11,6 +11,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Ensure session ID is reused
+  useEffect(() => {
+    if (!localStorage.getItem('session_id')) {
+      const id = crypto.randomUUID();
+      localStorage.setItem('session_id', id);
+    }
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,7 +48,8 @@ function App() {
 
     try {
       const response = await axios.post('https://c09935ad581a.ngrok-free.app/chat', {
-        message: message
+        message: message,
+        session_id: localStorage.getItem('session_id')
       });
 
       const botMessage = {
